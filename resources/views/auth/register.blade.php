@@ -129,7 +129,6 @@
             <div class="signFoot m-4">
                 <label for="">Already have an account?
                     <a id="loginAnchor" href="">Login</a>
-                    <h1>hj</h1>
                 </label>
             </div>
         </div>
