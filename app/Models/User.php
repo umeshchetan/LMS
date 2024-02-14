@@ -30,7 +30,7 @@ class User extends Authenticatable
         'city',
         'zip',
         'how_do_you_know_about_garcia',
-        'accepted'
+        'terms_and_condition'
     ];
 
     /**
@@ -66,7 +66,7 @@ class User extends Authenticatable
         $this->city = $userData['city'];
         $this->zip = $userData['zip'];
         $this->how_do_you_know_about_garcia = $userData['how_do_you_know_about_garcia'];
-        $this->terms_and_conditions = $userData['terms_and_conditions'];
+        $this->terms_and_condition = $userData['terms_and_condition'];
 
         $this->save();
     }

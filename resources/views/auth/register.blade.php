@@ -109,9 +109,9 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="terms_and_conditions">Zip*:</label>
+                    <label class="control-label col-sm-2" for="terms_and_condition">Zip*:</label>
                     <div class="col-sm-8">
-                        <input type="checkbox" name="terms_and_conditions" class="mb-3">
+                        <input type="checkbox" name="terms_and_condition" class="mb-3">
                         You must agree with our Terms and conditions
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                     required: true,
                     minlength: 6
                 },
-                terms_and_conditions: "required",
+                terms_and_condition: "required",
             },
             // Specify validation error messages
             messages: {
@@ -188,7 +188,7 @@
                     required: "Please enter your ZIP code",
                     minlength: "ZIP code must be at least 6 characters long"
                 },
-                terms_and_conditions: "Please accept the terms and conditions",
+                terms_and_condition: "Please accept the terms and conditions",
             },
             // Specify the error class to be used
             errorClass: "invalid-feedback",

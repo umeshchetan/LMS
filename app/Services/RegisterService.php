@@ -31,7 +31,7 @@ class RegisterService
                 'city' => $request->city,
                 'zip' => $request->zip,
                 'how_do_you_know_about_garcia' => $request->how_do_you_know_about_garcia,
-                'terms_and_conditions' => $request->terms_and_conditions
+                'terms_and_condition' => $request->has('terms_and_condition') 
             );
 
             $this->users->insert($userData);

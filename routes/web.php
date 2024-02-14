@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[UserController::class,'index'])->name('intialPage');
 
 // Register
-Route::get('/register',[RegisterController::class,'index'])->name('register');
-Route::post('/postregister',[RegisterController::class,'store'])->name('postregister');
+Route::get('register',[RegisterController::class,'index'])->name('register');
+Route::post('postregister',[RegisterController::class,'store'])->name('postregister');
 
 // navigate to all course Page
 Route::get('/courses',[CourseController::class,'index'])->name('all_course');
