@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    // protected $table = "users";
+    protected $table = "users";
     protected $fillable = [
         'name',
         'email',
@@ -52,4 +52,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function insert($userData){
+
+        $this->name = $userData['name'];
+        $this->email = $userData['email'];
+        $this->phone = $userData['phone'];
+        $this->date_of_birth = $userData['date_of_birth'];
+        $this->password = $userData['password'];
+        $this->address = $userData['address'];
+        $this->country = $userData['country'];
+        $this->state = $userData['state'];
+        $this->city = $userData['city'];
+        $this->zip = $userData['zip'];
+        $this->how_do_you_know_about_garcia = $userData['how_do_you_know_about_garcia'];
+        $this->terms_and_conditions = $userData['terms_and_conditions'];
+
+        $this->save();
+    }
 }

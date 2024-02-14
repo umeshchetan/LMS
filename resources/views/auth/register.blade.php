@@ -3,7 +3,7 @@
 @section('register')
 <p>Register</p>
 <div class="container">
-    <form class="form-horizontal" action="{{route('postregister')}}" method="post" id="multi_step_form">
+    <form class="form-horizontal" action="{{ route('postregister') }}" method="post" id="multi_step_form">
         @csrf
         <div class="tab-content">
             <!-- Step 1: User Details -->
@@ -86,13 +86,12 @@
                 <button type="button" name="previous_btn_personal_details" id="btn_previous_personal_details"
                     class="btn btn-info btn-sm">Previous</button>
                 <button type="button" class="btn-sm btn-primary" id="btn_next_personal_details">Next</button>
-
             </div>
             <div class="tab-pane" id="app_details">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Zip">Zip*:</label>
+                    <label class="control-label col-sm-2" for="zip">Zip*:</label>
                     <div class="col-sm-8">
-                        <input type="text" id="Zip" name="Zip" class="form-control form-control-sm">
+                        <input type="text" id="zip" name="zip" class="form-control form-control-sm">
                     </div>
                 </div>
                 <br>
@@ -119,7 +118,7 @@
                 <br>
                 <button type="button" name="previous_btn_personal_details" id="previous_btn_app_details"
                     class="btn btn-info btn-sm">Previous</button>
-                <button type="submit" class="btn-sm btn-primary" name="save">Save</button>
+                <button type="submit" class="btn-sm btn-primary" name="save" id="save">Save</button>
             </div>
         </div>
     </form>
@@ -130,17 +129,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 <script>
-   $(document).ready(function () {
+    $(document).ready(function () {
         // Initialize form validation on the multi-step form
         $("#multi_step_form").validate({
             // Specify validation rules for each step
             rules: {
                 name: "required",
-                // email: "required",
-                // phone: "required",
-                // date_of_birth: "required",
-                // password: "required",
-                // confirm_password: "required",
                 email: {
                     required: true,
                     email: true
@@ -157,8 +151,15 @@
                 confirm_password: {
                     required: true,
                     equalTo: "#pass"
-                }
-
+                },
+                address: "required",
+                state: "required",
+                city: "required",
+                zip: {
+                    required: true,
+                    minlength: 6
+                },
+                terms_and_conditions: "required",
             },
             // Specify validation error messages
             messages: {
@@ -179,7 +180,15 @@
                 confirm_password: {
                     required: "Please confirm your password",
                     equalTo: "Password and Confirm Password do not match"
-                }
+                },
+                address: "Please enter your address",
+                state: "Please enter your state",
+                city: "Please enter your city",
+                zip: {
+                    required: "Please enter your ZIP code",
+                    minlength: "ZIP code must be at least 6 characters long"
+                },
+                terms_and_conditions: "Please accept the terms and conditions",
             },
             // Specify the error class to be used
             errorClass: "invalid-feedback",
@@ -196,33 +205,41 @@
                 $(element).removeClass("is-invalid");
             }
         });
-    });
-    $(document).ready(function () {
-         // Step 1 to Step 2 Navigation
-    $("#btn_next_user_details").click(function () {
-        if ($("#multi_step_form").valid()) {
-            $("#user_details").removeClass("active");
+        // Step 1 to Step 2 Navigation
+        $("#btn_next_user_details").click(function () {
+            if ($("#multi_step_form").valid()) {
+                $("#user_details").removeClass("active");
+                $("#personal_details").addClass("active");
+            }
+        });
+
+        // Step 2 to Step 1 Navigation
+        $("#btn_previous_personal_details").click(function () {
+                $("#personal_details").removeClass("active");
+                $("#user_details").addClass("active");
+        });
+
+        // Step 2 to Step 3 Navigation
+        $("#btn_next_personal_details").click(function () {
+            if ($("#multi_step_form").valid()){
+                $("#personal_details").removeClass("active");
+                $("#app_details").addClass("active");
+            }
+        });
+
+        // Step 3 to Step 2 Navigation
+        $("#previous_btn_app_details").click(function () {
+            $("#app_details").removeClass("active");
             $("#personal_details").addClass("active");
-        }
-    });
+        });
 
-    // Step 2 to Step 1 Navigation
-    $("#btn_previous_personal_details").click(function () {
-        $("#personal_details").removeClass("active");
-        $("#user_details").addClass("active");
-    });
 
-    // Step 2 to Step 3 Navigation
-    $("#btn_next_personal_details").click(function () {
-        $("#personal_details").removeClass("active");
-        $("#app_details").addClass("active");
-    });
-
-    // Step 3 to Step 2 Navigation
-    $("#previous_btn_app_details").click(function () {
-        $("#app_details").removeClass("active");
-        $("#personal_details").addClass("active");
-    });
+        $("#save").click(function(){
+            // console.log('validate data',$("#multi_step_form").data();)
+            if ($("#multi_step_form").valid()){
+                $("#app_details").removeClass("active");
+            }
+        })
     });
 </script>
 @endsection
