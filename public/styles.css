@@ -1,0 +1,175 @@
+* {
+    font-family: Montserrat, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+#rightContent {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.rightLogo {
+    height: 100px;
+    width: 200px;
+    position: relative;
+    top: 25px;
+}
+
+.rightHead {
+    font-weight: 700;
+    color: rgb(76, 55, 144);
+}
+
+.para {
+    line-height: 30px;
+}
+
+#rightImg {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    top: 100px;
+    z-index: 10;
+}
+
+.emptydiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.emptydiv button {
+    font-weight: 700;
+    background: white;
+    color: #48308c;
+    border: 1px solid white;
+    padding: 7px 11px;
+    font-size: 15px;
+    margin-left: 300px;
+}
+
+#mag {
+    background-image: url('assets/data.jpg');
+    height: 500px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+#mag h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.leftMag {
+    padding: 30px 32px;
+}
+
+#rightMag {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+#cardIn {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topic{
+    color: #4c3790;
+    text-align: center;
+    font-weight: 700;
+    margin: 40px 0px;
+}
+
+#topicCard{
+    color: #4c3790;
+}
+
+.navLeft, .navRight{
+    display: flex;
+}
+
+.navRight{
+    margin-left: 20px;
+    align-items: center;
+    gap: 8px;
+    text-transform: capitalize;
+}
+
+.navRight i{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.signup{
+    background-color: rgb(64, 47, 123);
+    width: 100%;
+    /* height: 100vh; */
+}
+
+#signImage{
+    object-fit: cover;
+}
+
+.invalid-feedback{
+    color: red !important;
+}
+
+#multi_step_form label, .innerLogin label{
+    color: rgb(119, 227, 222);
+}
+
+.employee-form span{
+    /* color: red; */
+    font-size: 15px;
+}
+#loginAnchor{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+}
+
+#signRight, #rightLogin{
+    background: url('assets/register.jpg') left center / cover no-repeat;
+    height: 125vh !important;
+}
+
+.signFoot{
+    font-size: 18px;
+    color: rgb(119, 227, 222);
+    text-align: center;
+}
+
+#leftLogin{
+    background-color: rgb(64, 47, 123);
+}
+
+.innerLogin{
+    margin-top: 130px
+}
+
+.passwordDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.passwordDiv i{
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    cursor: pointer;
+}

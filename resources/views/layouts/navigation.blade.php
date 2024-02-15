@@ -13,7 +13,7 @@
                 <div class="d-flex sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
                     <div class="navLeft">
-                        <a href="{{ route('home') }}"
+                        <a href="{{ route('intialPage') }}"
                             class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
                         <a href="{{ url('/main') }}"
                             class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">My
@@ -25,7 +25,7 @@
                     <div class='navRight'>
                         <i class="fa-solid fa-user"></i>
                         <h3 class="" style="text-align:end">
-                            <a href="{{route('profile')}}">{{Auth::user()->name}}</a>
+                            <a href="" style="text-decoration: none;">{{Auth::user()->name}}</a>
                         </h3>
                     </div>
                     @else
