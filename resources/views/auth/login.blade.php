@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="container-fluid">
     <div class="row justify-content-md-center" id="">
@@ -15,10 +16,17 @@
                 <h1 class="" style="text-align:center;color:#fff;font-weight:700">WELCOME</h1>
                 <div class="form-div  mt-5">
                     @if (Session::has('error'))
-                    <p class="text-danger">{{ Session::get('error') }}</p>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong style="font-size:14px;">{{ Session::get('error') }}</strong>
+                        <button type="button" class="close" data-bs-dismiss="alert" style="font-size:14px;">x</button>
+                    </div>
                     @endif
+                   
                     @if (Session::has('success'))
-                    <p class="text-success">{{ Session::get('success') }}</p>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong style="font-size:14px;">{{ Session::get('success') }}</strong>
+                        <button type="button" class="close" data-bs-dismiss="alert" style="font-size:14px;">x</button>
+                    </div>
                     @endif
 
                     <form action="{{ route('postLogin') }}" method="post">

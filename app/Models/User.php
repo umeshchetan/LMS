@@ -70,4 +70,12 @@ class User extends Authenticatable
 
         $this->save();
     }
+
+    public function getUser(){
+        return User::all();
+    }
+
+    public function updateUserOrder($userId,$coursePurchased){
+        return $this->where("id",$userId)->update(["is_course_purchased",$coursePurchased]);
+    }
 }

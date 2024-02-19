@@ -20,19 +20,24 @@ class LoginService
             if(Auth::attempt(["email"=> $request->email, "password" => $request->password])){
                 $userId = Auth::id();
                 $user = User::find($userId);
-                // dd($user);
 
+                // create a token
+                $user = auth()->user();
+                $token = $user->createToken($request->email)->plainTextToken;
+                // dd($token);
+                // dd($user);
                 // check if user has orders in order table and navigate according to it
                 $userPurchased = $this->orders->getOrderDetails($userId);
+
                 // dd($userPurchased);
                 if($userPurchased){
-                    return $this->Navigate_To_ApplyCourse();
-                }else{
                     return $this->Navigate_To_MyCourse();
+                }else{
+                    return $this->Navigate_To_ApplyCourse();
                 }
             }else{
-                // If authentication fails dispaly error message...
-                return redirect()->back()->with('error', 'Not a valid user...');
+                // If authentication fails dispaly error message... and in controller add this in catch method return back();
+                return redirect()->back()->with('error', 'Invalid credentials. Please try again with valid credentials..');
             }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());

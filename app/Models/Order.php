@@ -20,6 +20,8 @@ class Order extends Model
         "userid",
         "email",
         "status",
+        "created_at",
+        "expired_at" 
     ];
 
     public function getOrderDetails($userId){

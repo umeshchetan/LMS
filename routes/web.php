@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthorizeController;
+use App\Http\Controllers\AuthorizeNet;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -32,6 +34,16 @@ Route::post('postregister',[RegisterController::class,'store'])->name('postregis
 Route::get('login',[LoginController::class,'index'])->name('login');
 Route::post('postlogin',[LoginController::class,'login'])->name('postLogin');
 
-// navigate to all course Page
+Route::group(['middleware'=>'auth'],function(){
+// logout
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
+// navigate course Page
 Route::get('/courses',[CourseController::class,'index'])->name('all_course');
-Route::get('/my_course',[CourseController::class,'index'])->name('my_course');
+Route::get('/my_course',[CourseController::class,'my_course'])->name('my_course');
+Route::match(['get', 'post'],'/apply_course',[CourseController::class,'apply_course'])->name('apply_course');
+
+// payment
+Route::post('pay',[AuthorizeNet::class,'payment'])->name('pay');
+Route::post('dopay/online',[AuthorizeNet::class,'handlePayment'])->name('dopay.online');
+
+});
